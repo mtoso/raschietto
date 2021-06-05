@@ -20,3 +20,4 @@ jobs:
         env:
           RASCHIETTO_BOT_TOKEN: ${{ secrets.RASCHIETTO_BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
+          URL_TO_SCRAPE: ${{ secrets.URL_TO_SCRAPE }} 
