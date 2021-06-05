@@ -1,0 +1,24 @@
+{
+  "name": "raschietto",
+  "version": "1.0.0",
+  "description": "A web scraper that sends Telegram notification",
+  "main": "raschietto.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node raschietto.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtoso/raschietto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtoso/raschietto/issues"
+  },
+  "homepage": "https://github.com/mtoso/raschietto#readme",
+  "dependencies": {
+    "telegraf": "^4.3.0"
+  }
+}
