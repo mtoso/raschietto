@@ -32,8 +32,8 @@ async function main() {
     const bot = new Telegraf(process.env.RASCHIETTO_BOT_TOKEN);
 
     const msg = productsStock.map(p => {
-        return `${p.name}: ${p.inStock ? '🚨 **In Stock** 🚨' : '~~Not In Stock~~'}\n`;
-    });
+        return `${p.name}: ${p.inStock ? '🚨 **In Stock** 🚨' : '~~Not In Stock~~'}`;
+    }).join('\n');
 
     bot.telegram.sendMessage(process.env.CHAT_ID, msg, { parse_mode: 'MarkdownV2' });
 
