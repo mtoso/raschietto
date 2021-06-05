@@ -35,7 +35,7 @@ async function main() {
         return `${p.name}: ${p.inStock ? '🚨 **In Stock** 🚨' : '~~Not In Stock~~'}`;
     }).join('\n');
 
-    bot.telegram.sendMessage(process.env.CHAT_ID, msg, { parse_mode: 'MarkdownV2' });
+    bot.telegram.sendMessage(process.env.CHAT_ID, msg, { parse_mode: 'Markdown' });
 
     // Enable graceful stop
     process.once('SIGINT', () => bot.stop('SIGINT'));
