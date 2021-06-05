@@ -32,10 +32,10 @@ async function main() {
     const bot = new Telegraf(process.env.RASCHIETTO_BOT_TOKEN);
 
     const msg = productsStock.map(p => {
-        return `${p.name}: ${p.inStock ? '🚨 **In Stock** 🚨' : '~~Not In Stock~~'}`;
+        return `${p.name}: ${p.inStock ? '🚨 <strong>In Stock</strong> 🚨' : '<del>Not In Stock</del>'}`;
     }).join('\n');
 
-    bot.telegram.sendMessage(process.env.CHAT_ID, msg, { parse_mode: 'Markdown' });
+    bot.telegram.sendMessage(process.env.CHAT_ID, msg, { parse_mode: 'HTML' });
 
     // Enable graceful stop
     process.once('SIGINT', () => bot.stop('SIGINT'));
