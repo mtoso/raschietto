@@ -1,5 +1,10 @@
+require('dotenv').config();
 const { Telegraf } = require('telegraf');
 const playwright = require('playwright');
+
+const urlToScrape = process.env.URL_TO_SCRAPE;
+const raschiettoBotToken = process.env.RASCHIETTO_BOT_TOKEN;
+const chatId = process.env.CHAT_ID;
 
 async function main() {
     const browser = await playwright.chromium.launch({
@@ -7,7 +12,7 @@ async function main() {
     });
     
     const page = await browser.newPage();
-    await page.goto(process.env.URL_TO_SCRAPE);
+    await page.goto(urlToScrape);
     const productsContainerHandle = await page.waitForSelector('.products');
     const productsHandle = await productsContainerHandle.$$('div[id^="product-"]');
     const productsStock = [];
@@ -29,13 +34,13 @@ async function main() {
     }
     await browser.close();
 
-    const bot = new Telegraf(process.env.RASCHIETTO_BOT_TOKEN);
+    const bot = new Telegraf(raschiettoBotToken);
 
     const msg = productsStock.map(p => {
         return `${p.name}: ${p.inStock ? '🚨 <strong>In Stock</strong> 🚨' : '<del>Not In Stock</del>'}`;
     }).join('\n');
 
-    bot.telegram.sendMessage(process.env.CHAT_ID, msg, { parse_mode: 'HTML' });
+    bot.telegram.sendMessage(chatId, msg, { parse_mode: 'HTML' });
 
     // Enable graceful stop
     process.once('SIGINT', () => bot.stop('SIGINT'));
