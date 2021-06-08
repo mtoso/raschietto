@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { Telegraf } = require('telegraf');
-const playwright = require('playwright');
+const { chromium } = require('playwright-chromium');
 const crypto = require('crypto');
 const { readFileSync, writeFileSync, existsSync } = require('fs');
 
@@ -10,12 +10,10 @@ const chatId = process.env.CHAT_ID;
 const stockOfProductsChecksumFile = 'stocksOfProductsChecksum.txt';
 
 async function main() {
-    const browser = await playwright.chromium.launch({
-        headless: true
-    });
-    
+    const browser = await chromium.launch({ headless: true });
     const page = await browser.newPage();
     await page.goto(urlToScrape);
+    
     const productsContainerHandle = await page.waitForSelector('.products');
     const productsHandle = await productsContainerHandle.$$('div[id^="product-"]');
     const products = [];
