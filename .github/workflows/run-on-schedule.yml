@@ -24,5 +24,5 @@ jobs:
           URL_TO_SCRAPE: ${{ secrets.URL_TO_SCRAPE }}
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: [Raschietto] Update checksum file
+          commit_message: Update checksum file
           commit_user_name: Raschietto
