@@ -2,8 +2,9 @@ name: Run Node.js script on a schedule
 
 on:
   push:
-  # schedule:
-  #   - cron: "0 * * * *" # run at every hour
+  schedule:
+    # run at every hour
+    - cron: "0 * * * *"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
