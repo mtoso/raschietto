@@ -16,9 +16,12 @@ jobs:
         with:
           node-version: '12.x'
       - run: npm install
-      - name: Run script
+      - name: Start scraping
         run: npm start
         env:
           RASCHIETTO_BOT_TOKEN: ${{ secrets.RASCHIETTO_BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
-          URL_TO_SCRAPE: ${{ secrets.URL_TO_SCRAPE }} 
+          URL_TO_SCRAPE: ${{ secrets.URL_TO_SCRAPE }}
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update checksum file
