@@ -4,7 +4,7 @@ on:
   push:
   schedule:
     # run every 15 minutes
-    - cron: "*/15 * * * *"
+    # - cron: "*/15 * * * *"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
